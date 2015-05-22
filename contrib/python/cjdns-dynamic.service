@@ -1,0 +1,17 @@
+[Unit]
+Description=dynamic DNS peer resolver for cjdns
+Requires=cjdns.service
+BindsTo=cjdns.service
+After=cjdns.service
+
+[Service]
+Type=simple
+ProtectHome=true
+ProtectSystem=true
+# TODO: More confinement! It's never enough!
+ExecStartPre=/usr/lib/cjdns/dynamicEndpointsGenConf.sh
+ExecStart=/usr/lib/cjdns/dynamicEndpoints.py
+Restart=always
+
+[Install]
+WantedBy=cjdns.service

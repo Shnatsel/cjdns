@@ -1,5 +1,5 @@
 [Unit]
-Description=cjdns: routing engine designed for security, scalability, speed and ease of use
+Description=A routing engine designed for security, scalability, speed and ease of use
 Wants=network.target
 After=network.target
 
@@ -7,7 +7,7 @@ After=network.target
 Type=simple
 ProtectHome=true
 ProtectSystem=true
-ExecStartPre=/bin/sh -ec "if ! test -e /etc/cjdroute.conf; \
+ExecStart=/bin/sh -ec "if ! test -e /etc/cjdroute.conf; \
                 then umask 077; \
                 /usr/bin/cjdroute --genconf > /etc/cjdroute.conf; \
                 echo 'WARNING: A new /etc/cjdroute.conf file has been generated.'; \
